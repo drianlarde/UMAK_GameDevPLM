@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject scoreObject;
+
+    void Awake()
+    {
+        PlayerPrefs.SetInt("highScore", 0);
+    }
+
     public void PlayGame()
     {
         Debug.Log("Play Game");
@@ -20,10 +27,12 @@ public class MainMenu : MonoBehaviour
     public void Open()
     {
         transform.LeanScale(Vector2.one, 0.1f).setEaseInCubic();
+        scoreObject.GetComponent<ScoreScript>().showHighScore();
     }
 
     public void Close()
     {
         transform.LeanScale(Vector2.zero, 0.1f).setEaseInCubic();
+        scoreObject.GetComponent<ScoreScript>().hideHighScore();
     }
 }

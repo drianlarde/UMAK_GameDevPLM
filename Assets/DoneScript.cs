@@ -20,4 +20,10 @@ public class DoneScript : MonoBehaviour
 
         transform.LeanMoveLocal(new Vector2(0, 1000), 0.1f).setEaseInOutCubic();
     }
+
+    public void Reset()
+    {
+        transform.LeanScale(Vector2.zero, 0.1f).setEaseInCubic();
+        transform.LeanMoveLocal(new Vector2(0, -2000), 1.6f).setEaseInOutCubic();
+    }
 }

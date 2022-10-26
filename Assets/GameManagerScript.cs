@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManagerScript : MonoBehaviour
 {
-    // initialize an array of gameObject publicly so we can drag and drop the game objects into the array and randomly show them
 
     public GameObject[] gameObjects;
+    public GameObject doneGameObject;
     List<int> answeredQuestions = new List<int>();
     public int previousQuestion;
+    public GameObject TimerBar;
 
-    // function to show the game objects
     public void ShowGameObjects()
     {
+        // get TimerBar script and start the timer by invoking the function startTimer()
+        TimerBar.GetComponent<TimerBarScript>().resetTimer();
+        TimerBar.GetComponent<TimerBarScript>().startTimer();
+
         bool isAnswered = false;
         int randomIndex = Random.Range(0, gameObjects.Length);
 
@@ -23,6 +28,20 @@ public class GameManagerScript : MonoBehaviour
             if (answeredQuestions.Count == gameObjects.Length)
             {
                 Debug.Log("Done!");
+
+                foreach (GameObject gameObject in gameObjects)
+                {
+                    gameObject.SetActive(false);
+                    gameObject.GetComponent<LevelsScript>().Reset();
+                }
+
+
+
+
+                TimerBar.GetComponent<TimerBarScript>().clearTimer();
+                answeredQuestions.Clear();
+                doneGameObject.GetComponent<DoneScript>().Open();
+
                 return;
             }
             else
@@ -37,11 +56,13 @@ public class GameManagerScript : MonoBehaviour
                 }
                 if (!isAnswered)
                 {
-                    answeredQuestions.Add(randomIndex);
-                    gameObjects[previousQuestion].SetActive(false);
-                    gameObjects[randomIndex].SetActive(true);
-                    previousQuestion = randomIndex;
                     Debug.Log("1");
+                    answeredQuestions.Add(randomIndex);
+                    gameObjects[previousQuestion].GetComponent<LevelsScript>().Close();
+                    previousQuestion = randomIndex;
+
+                    gameObjects[randomIndex].SetActive(true);
+                    gameObjects[randomIndex].GetComponent<LevelsScript>().Open();
                 }
                 else
                 {
@@ -53,11 +74,29 @@ public class GameManagerScript : MonoBehaviour
         }
         else
         {
-            gameObjects[randomIndex].SetActive(true);
-            answeredQuestions.Add(randomIndex);
-            previousQuestion = randomIndex;
             Debug.Log("3");
 
+            gameObjects[randomIndex].SetActive(true);
+            gameObjects[randomIndex].GetComponent<LevelsScript>().Open();
+            answeredQuestions.Add(randomIndex);
+            previousQuestion = randomIndex;
         }
+    }
+
+    public void ResetGame()
+    {
+        Debug.Log("Reset Game");
+        foreach (GameObject gameObject in gameObjects)
+        {
+            gameObject.SetActive(false);
+            gameObject.GetComponent<LevelsScript>().Reset();
+        }
+
+
+        answeredQuestions.Clear();
+        gameObjects[previousQuestion].SetActive(false);
+        TimerBar.GetComponent<TimerBarScript>().clearTimer();
+
+        // ShowGameObjects();
     }
 }
