@@ -5,11 +5,11 @@ using UnityEngine;
 public class LevelsScript : MonoBehaviour
 {
 
-    private void Start()
-    {
-        transform.localScale = Vector2.zero;
-        transform.LeanMoveLocal(new Vector2(0, -1000), 0.3f).setEaseInOutCubic();
-    }
+    // private void Start()
+    // {
+    //     transform.localScale = Vector2.zero;
+    //     transform.LeanMoveLocal(new Vector2(0, -1000), 0.3f).setEaseInOutCubic();
+    // }
     public void Open()
     {
 
