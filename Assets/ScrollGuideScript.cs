@@ -11,7 +11,7 @@ public class ScrollGuideScript : MonoBehaviour
 
     public void Open()
     {
-        gameObject.LeanAlpha(1f, 0.3f).setEaseInCubic();
+        gameObject.LeanAlpha(0.3f, 0.3f).setEaseInCubic();
     }
 
     public void Close()
