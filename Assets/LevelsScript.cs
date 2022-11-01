@@ -12,20 +12,20 @@ public class LevelsScript : MonoBehaviour
     // }
     public void Open()
     {
-        Debug.Log("'Ran!'");
-        transform.LeanScale(Vector2.one, 0.1f).setEaseInCubic();
+        // Debug.Log("'Ran!'");
+        transform.LeanScale(Vector2.one * 3, 0.1f).setEaseInCubic();
         transform.LeanMoveLocal(new Vector2(0, 0), 0.3f).setEaseInOutCubic();
     }
 
     public void Close()
     {
-        transform.LeanMoveLocal(new Vector2(0, 1000), 0.3f).setEaseInOutCubic();
+        transform.LeanMoveLocal(new Vector2(0, 10000), 0.3f).setEaseInOutCubic();
     }
 
     public void Reset()
     {
-        Debug.Log("Reset Level Positions!");
+        // Debug.Log("Reset Level Positions!");
         transform.LeanScale(Vector2.zero, 0.1f).setEaseInCubic();
-        transform.LeanMoveLocal(new Vector2(0, -250), 1.6f).setEaseInOutCubic();
+        transform.LeanMoveLocal(new Vector2(0, -5000), 1.6f).setEaseInOutCubic();
     }
 }

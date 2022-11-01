@@ -13,7 +13,7 @@ public class OptionsMenu : MonoBehaviour
 
     public void Open()
     {
-        transform.LeanScale(Vector2.one, 0.1f).setEaseInCubic();
+        transform.LeanScale(Vector2.one * 3, 0.1f).setEaseInCubic();
     }
 
     public void Close()

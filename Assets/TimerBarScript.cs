@@ -7,7 +7,7 @@ public class TimerBarScript : MonoBehaviour
 {
     public GameObject tryAgainObject;
     public GameObject gameManagerObject;
-    public int time = 5;
+    public int time = 10;
 
     public void startTimer()
     {

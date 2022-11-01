@@ -7,26 +7,21 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject scoreObject;
 
-    void Awake()
-    {
-        PlayerPrefs.SetInt("highScore", 0);
-    }
-
     public void PlayGame()
     {
-        Debug.Log("Play Game");
+        // Debug.Log("Play Game");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void QuitGame()
     {
-        Debug.Log("Quit Game");
+        // Debug.Log("Quit Game");
         Application.Quit();
     }
 
     public void Open()
     {
-        transform.LeanScale(Vector2.one, 0.1f).setEaseInCubic();
+        transform.LeanScale(Vector2.one * 3, 0.1f).setEaseInCubic();
         scoreObject.GetComponent<ScoreScript>().showHighScore();
     }
 

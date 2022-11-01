@@ -16,9 +16,9 @@ public class LoaderScript : MonoBehaviour
 
     public void Open()
     {
-        transform.LeanScale(Vector2.one, 0.1f).setEaseInCubic();
+        transform.LeanScale(Vector2.one * 3, 0.1f).setEaseInCubic();
         // Reset levels object to default position
-     
+
         LeanTween.delayedCall(1.3f, () =>
         {
             transform.LeanScale(Vector2.zero, 0.1f).setEaseInCubic();

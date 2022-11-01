@@ -12,6 +12,8 @@ public class GameManagerScript : MonoBehaviour
     public int previousQuestion;
     public GameObject TimerBar;
 
+    public GameObject[] WebsiteUIObject;
+
     public void ShowGameObjects()
     {
         // get TimerBar script and start the timer by invoking the function startTimer()
@@ -21,13 +23,13 @@ public class GameManagerScript : MonoBehaviour
         bool isAnswered = false;
         int randomIndex = Random.Range(0, gameObjects.Length);
 
-        Debug.Log("Answered Questions: " + answeredQuestions.Count);
+        // Debug.Log("Answered Questions: " + answeredQuestions.Count);
 
         if (answeredQuestions.Count > 0)
         {
             if (answeredQuestions.Count == gameObjects.Length)
             {
-                Debug.Log("Done!");
+                // Debug.Log("Done!");
 
                 foreach (GameObject gameObject in gameObjects)
                 {
@@ -56,7 +58,7 @@ public class GameManagerScript : MonoBehaviour
                 }
                 if (!isAnswered)
                 {
-                    Debug.Log("1");
+                    // Debug.Log("1");
                     answeredQuestions.Add(randomIndex);
                     gameObjects[previousQuestion].GetComponent<LevelsScript>().Close();
                     previousQuestion = randomIndex;
@@ -66,7 +68,7 @@ public class GameManagerScript : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("2");
+                    // Debug.Log("2");
                     ShowGameObjects();
                     return;
                 }
@@ -74,7 +76,7 @@ public class GameManagerScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("3");
+            // Debug.Log("3");
 
             gameObjects[randomIndex].SetActive(true);
             gameObjects[randomIndex].GetComponent<LevelsScript>().Open();
@@ -97,6 +99,11 @@ public class GameManagerScript : MonoBehaviour
         gameObjects[previousQuestion].SetActive(false);
         TimerBar.GetComponent<TimerBarScript>().clearTimer();
 
-        // ShowGameObjects();
+        // Disable the website UI
+        foreach (GameObject gameObject in WebsiteUIObject)
+        {
+            // Get their script and invoke the function Close()
+            gameObject.GetComponent<WebsiteUIScript>().Close();
+        }
     }
 }

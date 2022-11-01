@@ -7,6 +7,7 @@ public class ScoreScript : MonoBehaviour
 {
     TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
+    public GameObject highScoreObject;
     int highScore;
 
     void Awake()
@@ -27,12 +28,12 @@ public class ScoreScript : MonoBehaviour
 
     public void showHighScore()
     {
-        highScoreText.gameObject.SetActive(true);
+        highScoreObject.LeanScale(Vector2.one * 3, 0.1f).setEaseInCubic();
     }
 
     public void hideHighScore()
     {
-        highScoreText.gameObject.SetActive(false);
+        highScoreObject.LeanScale(Vector2.zero, 0.1f).setEaseInCubic();
     }
 
     public void addScore()
@@ -45,7 +46,7 @@ public class ScoreScript : MonoBehaviour
         if (score > highScore)
         {
             PlayerPrefs.SetInt("highScore", score);
-            Debug.Log("Set a new High Score!");
+            // Debug.Log("Set a new High Score!");
 
             highScoreText.text = "High Score: " + score;
         }
