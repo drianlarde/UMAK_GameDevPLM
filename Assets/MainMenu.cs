@@ -7,6 +7,11 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject scoreObject;
 
+    void Start()
+    {
+        scoreObject.GetComponent<ScoreScript>().resetScore();
+    }
+
     public void PlayGame()
     {
         // Debug.Log("Play Game");

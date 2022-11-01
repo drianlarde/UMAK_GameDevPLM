@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DoneScript : MonoBehaviour
 {
-    public GameObject websiteUIObject;
 
     private void Start()
     {
@@ -27,6 +26,5 @@ public class DoneScript : MonoBehaviour
     {
         transform.LeanScale(Vector2.zero, 0.1f).setEaseInCubic();
         transform.LeanMoveLocal(new Vector2(0, -10000), 1.6f).setEaseInOutCubic();
-        websiteUIObject.GetComponent<WebsiteUIScript>().Close();
     }
 }

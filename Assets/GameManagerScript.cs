@@ -37,9 +37,6 @@ public class GameManagerScript : MonoBehaviour
                     gameObject.GetComponent<LevelsScript>().Reset();
                 }
 
-
-
-
                 TimerBar.GetComponent<TimerBarScript>().clearTimer();
                 answeredQuestions.Clear();
                 doneGameObject.GetComponent<DoneScript>().Open();
@@ -63,7 +60,12 @@ public class GameManagerScript : MonoBehaviour
                     gameObjects[previousQuestion].GetComponent<LevelsScript>().Close();
                     previousQuestion = randomIndex;
 
+                    // gameObjects[randomIndex].transform.Find("LikeButton").gameObject.SetActive(true);
+                    // gameObjects[randomIndex].transform.Find("ReportButton").gameObject.SetActive(true);
+                    gameObjects[randomIndex].transform.Find("WrongButton").gameObject.SetActive(true);
+                    gameObjects[randomIndex].transform.Find("RightButton").gameObject.SetActive(true);
                     gameObjects[randomIndex].SetActive(true);
+
                     gameObjects[randomIndex].GetComponent<LevelsScript>().Open();
                 }
                 else
@@ -77,7 +79,10 @@ public class GameManagerScript : MonoBehaviour
         else
         {
             // Debug.Log("3");
-
+            // gameObjects[randomIndex].transform.Find("LikeButton").gameObject.SetActive(true);
+            // gameObjects[randomIndex].transform.Find("ReportButton").gameObject.SetActive(true);
+            gameObjects[randomIndex].transform.Find("WrongButton").gameObject.SetActive(true);
+            gameObjects[randomIndex].transform.Find("RightButton").gameObject.SetActive(true);
             gameObjects[randomIndex].SetActive(true);
             gameObjects[randomIndex].GetComponent<LevelsScript>().Open();
             answeredQuestions.Add(randomIndex);
@@ -93,7 +98,6 @@ public class GameManagerScript : MonoBehaviour
             gameObject.SetActive(false);
             gameObject.GetComponent<LevelsScript>().Reset();
         }
-
 
         answeredQuestions.Clear();
         gameObjects[previousQuestion].SetActive(false);

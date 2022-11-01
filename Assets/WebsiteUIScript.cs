@@ -15,7 +15,7 @@ public class WebsiteUIScript : MonoBehaviour
     public void Open()
     {
         dimBGObject.GetComponent<DimBGScript>().Open();
-        transform.LeanScale(Vector2.one * 22, 0.1f).setEaseInCubic();
+        transform.LeanScale(Vector2.one * 24, 0.1f).setEaseInCubic();
     }
 
     public void Close()

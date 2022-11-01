@@ -24,6 +24,7 @@ public class ScoreScript : MonoBehaviour
     public void showScore()
     {
         gameObject.SetActive(true);
+        scoreText.text = "0";
     }
 
     public void showHighScore()
@@ -55,7 +56,6 @@ public class ScoreScript : MonoBehaviour
     public void resetScore()
     {
         PlayerPrefs.SetInt("score", 0);
-        scoreText.text = "0";
         gameObject.SetActive(false);
     }
 }
