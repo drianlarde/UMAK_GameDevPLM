@@ -10,6 +10,7 @@ public class TimerBarScript : MonoBehaviour
     public GameObject tryAgainObject;
     public GameObject gameManagerObject;
     public GameObject cameraObject;
+    public GameObject timerBarBG;
     public int time = 10;
     public PostProcessVolume volume;
     public Image image;
@@ -24,10 +25,12 @@ public class TimerBarScript : MonoBehaviour
         image.color = tempColor;
         volume.profile.TryGetSettings(out _Vignette);
         volume.profile.TryGetSettings(out _ChromaticAberration);
+        timerBarBG.SetActive(false);
     }
 
     public void startTimer()
     {
+        timerBarBG.SetActive(true);
         // Enable the timer bar
         var tempColor = image.color;
         tempColor.a = 1f;
@@ -65,6 +68,7 @@ public class TimerBarScript : MonoBehaviour
 
     public void clearTimer()
     {
+        timerBarBG.SetActive(false);
         var tempColor = image.color;
         tempColor.a = 0f;
         image.color = tempColor;
