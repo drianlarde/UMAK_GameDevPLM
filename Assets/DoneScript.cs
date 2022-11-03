@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DoneScript : MonoBehaviour
 {
+    public AudioSource winSfx;
 
     private void Start()
     {
@@ -14,6 +15,7 @@ public class DoneScript : MonoBehaviour
     {
         transform.LeanScale(Vector2.one * 3, 0.1f).setEaseInCubic();
         transform.LeanMoveLocal(new Vector2(0, 0), 0.3f).setEaseInOutCubic();
+        winSfx.Play();
     }
 
     public void Close()
